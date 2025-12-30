@@ -29,13 +29,14 @@ Install the required dependencies:
 pip install opencv-python numpy
 ```
 ## 🚀 How to Run
-1 . Clone the repository.
-2 . **IMPORTANT**: Open the python script (e.g., lucas_kanade.py) and change the video path in the __main__ section:
+1. Clone the repository.
+2. **IMPORTANT**: Open the python script (e.g., lucas_kanade.py) and change the video path in the __main__ section:
 ```python
 # ⚠️ Change this to your video path or 0 for webcam
 lucas_kanade_method("path/to/your/video.mp4")
 ```
- 3 . Run the script:
+ 3. Run the script:
+ 
  ```bash
 python lucas_kanade.py
 ```
