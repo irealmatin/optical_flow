@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import time
 
-def optimized_lucas_kanade(source=0):
+def optimized_lucas_kanade(source):
     """
     Runs Lucas-Kanade Optical Flow with Forward-Backward Error Checking 
     and Trajectory History.
@@ -45,7 +45,8 @@ def optimized_lucas_kanade(source=0):
 
         # 3. Optical Flow Tracking (if we have points)
         # --------------------------------------------
-        if len(trajectories) > 0:
+        if len(trajectories) > 0: 
+
             img0, img1 = prev_gray, frame_gray
             
             # Get the last point of each trajectory to track
@@ -90,7 +91,7 @@ def optimized_lucas_kanade(source=0):
 
         # 4. Detect New Points (Replenishment)
         # ------------------------------------
-        if frame_idx % detect_interval == 0:
+        if frame_idx % detect_interval == 0: # this line do this : every 5 frame we will detect new points
             # Create a mask to avoid detecting points on existing tracks
             mask = np.zeros_like(frame_gray)
             mask[:] = 255 # Fill with white
@@ -107,26 +108,26 @@ def optimized_lucas_kanade(source=0):
                 for x, y in np.float32(p).reshape(-1, 2):
                     trajectories.append([(x, y)]) # Start a new trajectory
 
-        # 5. Housekeeping
+        # 5. Housekeeping 
         # ---------------
         frame_idx += 1
         prev_gray = frame_gray
         
         # Calculate FPS
         fps = 1.0 / (time.time() - start_time)
-        cv2.putText(vis_frame, f"FPS: {fps:.1f}", (20, 50), 
+        cv2.putText(vis_frame, f"FPS: {fps:.2f}", (20, 50), 
                     cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
 
-        cv2.imshow('Advanced Optical Flow', vis_frame)
+        cv2.imshow('Optical Flow Window', vis_frame)
         cv2.imshow('Mask', mask)
 
          # Exit on 'q' key
         
-        if cv2.waitKey(10) & 0xFF == ord('q'):
+        if cv2.waitKey(20) & 0xFF == ord('q'):
             break
 
     cap.release()
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    optimized_lucas_kanade()
+    optimized_lucas_kanade("videos/car.mp4")
