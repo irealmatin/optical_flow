@@ -10,7 +10,7 @@ def lucas_kanade_method(video_path):
     """
     cap = cv2.VideoCapture(video_path)
     # params for ShiTomasi corner detection
-    feature_params = dict(maxCorners=100, qualityLevel=0.3, minDistance=7, blockSize=7)
+    feature_params = dict(maxCorners=100, qualityLevel=0.5, minDistance=7, blockSize=7)
 
     # Parameters for lucas kanade optical flow
     lk_params = dict(
@@ -24,6 +24,10 @@ def lucas_kanade_method(video_path):
 
     # Take first frame and find corners in it
     ret, old_frame = cap.read()
+    if not ret:
+        print("Error: Video file not found or empty.")
+        return
+    
     old_gray = cv2.cvtColor(old_frame, cv2.COLOR_BGR2GRAY)
     p0 = cv2.goodFeaturesToTrack(old_gray, mask=None, **feature_params) # this function find the good feature to track using ShiTomasi method
 
@@ -34,7 +38,10 @@ def lucas_kanade_method(video_path):
         ret, frame = cap.read()
         if not ret:
             break
+
         frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+
         # calculate optical flow
         p1, st, err = cv2.calcOpticalFlowPyrLK(
             old_gray, frame_gray, p0, None, **lk_params
@@ -55,13 +62,15 @@ def lucas_kanade_method(video_path):
             mask = cv2.line(mask, (a, b), (c, d), color[i].tolist(), 2) # draw line from old point to new point
             frame = cv2.circle(frame, (a, b), 5, color[i].tolist(), -1) # draw circle at new point
 
-        img = cv2.add(frame, mask)
+        img = cv2.add(frame, mask) # this is for overlaying the line on the frame
         cv2.imshow("frame", img)
-        k = cv2.waitKey(30) & 0xFF
+
+        k = cv2.waitKey(60) & 0xFF
         if k == 27:
             break
         if k == ord("c"):
             mask = np.zeros_like(old_frame)
+            
         # Now update the previous frame and previous points
         old_gray = frame_gray.copy()
         p0 = good_new.reshape(-1, 1, 2) # our new points become the old points for next iteration
