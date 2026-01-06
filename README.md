@@ -44,6 +44,10 @@ or you can run the program by passing the video path as a command-line argument:
 ```bash
 python demo.py --algorithm lucaskanade_interactive --video_path ../videos/car.mp4
 ``` 
+or pass 0 to use the webcam:
+```bash
+python demo.py --algorithm lucaskanade --capture_index 0
+```
 4. Press 'q' to exit the video window.
 
 notice that put the currect path to the video file in the code before running.
