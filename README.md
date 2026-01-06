@@ -19,7 +19,7 @@ A differential method that assumes the flow is essentially constant in a local n
 ## 📂 Current Implementations
 
 - **Sparse Optical Flow (Lucas-Kanade):** Tracks specific features (corners) using the Pyramid Lucas-Kanade method.
-- *(More algorithms like Dense Optical Flow coming soon...)*
+- **Optimized Sparse Optical Flow:** An enhanced version of the Lucas-Kanade method with forward-backward error checking and trajectory history.
 
 ## ⚙️ Prerequisites
 

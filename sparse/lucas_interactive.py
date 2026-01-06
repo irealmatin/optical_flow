@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import time
 
-def run_advanced_optical_flow(source=0):
+def optimized_lucas_kanade(source=0):
     """
     Runs Lucas-Kanade Optical Flow with Forward-Backward Error Checking 
     and Trajectory History.
@@ -129,4 +129,4 @@ def run_advanced_optical_flow(source=0):
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    run_advanced_optical_flow()
+    optimized_lucas_kanade()
