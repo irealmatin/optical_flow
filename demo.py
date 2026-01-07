@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 import cv2
 from sparse.lucas_kanade import lucas_kanade_method
-from sparse.lucas_interactive import optimized_lucas_kanade
+from sparse_optical_flow.sparse.lucaskanade_interactive import optimized_lucas_kanade
 
 def main():
     parser = ArgumentParser()
@@ -12,7 +12,7 @@ def main():
         help="Optical flow algorithm to use",
     )
     parser.add_argument(
-        "--video_path", default="videos/car.mp4", help="Path to the video",
+        "--video_path", default=None, help="Path to the video",
         
     ) 
 

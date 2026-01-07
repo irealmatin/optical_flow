@@ -130,4 +130,4 @@ def optimized_lucas_kanade(source):
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    optimized_lucas_kanade("videos/car.mp4")
+    optimized_lucas_kanade('videos/car.mp4')
