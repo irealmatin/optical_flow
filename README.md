@@ -50,4 +50,7 @@ python demo.py --algorithm lucaskanade --capture_index 0
 ```
 4. Press 'q' to exit the video window.
 
-notice that put the currect path to the video file in the code before running.
+### currently supported algorithms to run via demo.py:
+- lucaskanade
+- lucaskanade_manual
+- lucaskanade_interactive
