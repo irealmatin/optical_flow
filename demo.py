@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 import cv2
 from sparse.lucas_kanade import lucaskanade_method , lucaskanade_manual_tracking
-from sparse_optical_flow.sparse.lucaskanade_interactive import optimized_lucaskanade_method
+from sparse.lucaskanade_interactive import optimized_lucaskanade_method
 
 def main():
     parser = ArgumentParser()

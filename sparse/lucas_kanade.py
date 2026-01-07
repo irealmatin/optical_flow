@@ -49,6 +49,9 @@ def lucaskanade_method(path):
 
         frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
+        if p0 is None or len(p0) == 0:
+            print("No points to track.")
+            break
 
         # calculate optical flow
         p1, st, err = cv2.calcOpticalFlowPyrLK(
@@ -58,6 +61,10 @@ def lucaskanade_method(path):
         # Select good points
         good_new = p1[st == 1]
         good_old = p0[st == 1]
+
+        if len(good_new) == 0:
+            print("No points to track.")
+            break
 
         # draw the tracks
         for i, (new, old) in enumerate(zip(good_new, good_old)):
