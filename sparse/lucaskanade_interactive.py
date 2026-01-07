@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import time
 
-def optimized_lucas_kanade(source):
+def optimized_lucaskanade_method(source):
     """
     Runs Lucas-Kanade Optical Flow with Forward-Backward Error Checking 
     and Trajectory History.
@@ -33,7 +33,9 @@ def optimized_lucas_kanade(source):
         return
 
     while True:
-        start_time = time.time()
+
+        # start_time = time.time()
+        timer = cv2.getTickCount()  # For FPS calculation
         
         # Read Frame
         ret, frame = cap.read()
@@ -114,7 +116,9 @@ def optimized_lucas_kanade(source):
         prev_gray = frame_gray
         
         # Calculate FPS
-        fps = 1.0 / (time.time() - start_time)
+        # fps = 1.0 / (time.time() - start_time)
+        fps = cv2.getTickFrequency() / (cv2.getTickCount() - timer) 
+
         cv2.putText(vis_frame, f"FPS: {fps:.2f}", (20, 50), 
                     cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
 
@@ -130,4 +134,4 @@ def optimized_lucas_kanade(source):
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    optimized_lucas_kanade('videos/car.mp4')
+    optimized_lucaskanade_method('sparse_optical_flow/videos/Highway_9654.mp4')

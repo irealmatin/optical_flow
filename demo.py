@@ -1,13 +1,13 @@
 from argparse import ArgumentParser
 import cv2
-from sparse.lucas_kanade import lucas_kanade_method
-from sparse_optical_flow.sparse.lucaskanade_interactive import optimized_lucas_kanade
+from sparse.lucas_kanade import lucaskanade_method , lucaskanade_manual_tracking
+from sparse_optical_flow.sparse.lucaskanade_interactive import optimized_lucaskanade_method
 
 def main():
     parser = ArgumentParser()
     parser.add_argument(
         "--algorithm",
-        choices=["lucaskanade", "lucaskanade_interactive"],
+        choices=["lucaskanade", "lucaskanade_interactive" , "lucaskanade_manual"],
         required=True,
         help="Optical flow algorithm to use",
     )
@@ -29,9 +29,13 @@ def main():
         video_source = args.capture_index
 
     if args.algorithm == "lucaskanade":
-        lucas_kanade_method(video_source)
+        lucaskanade_method(video_source)
+
+    elif args.algorithm == "lucaskanade_manual":
+        lucaskanade_manual_tracking(video_source)
+
     elif args.algorithm == "lucaskanade_interactive":
-        optimized_lucas_kanade(video_source)
+        optimized_lucaskanade_method(video_source)
 
 if __name__ == "__main__":
     main()
