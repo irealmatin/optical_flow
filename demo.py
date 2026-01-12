@@ -8,7 +8,7 @@ def main():
     parser = ArgumentParser()
     parser.add_argument(
         "--algorithm",
-        choices=["lucaskanade", "lucaskanade_interactive" , "lucaskanade_manual , dence_pyramid_lk" , "dence_rlof"],
+        choices=["lucaskanade", "lucaskanade_interactive" , "lucaskanade_manual" , "dence_pyramid_lk" , "dence_rlof"],
         required=True,
         help="Optical flow algorithm to use",
     )
