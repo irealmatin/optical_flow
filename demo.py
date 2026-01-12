@@ -1,13 +1,14 @@
 from argparse import ArgumentParser
-import cv2
 from sparse.lucas_kanade import lucaskanade_method , lucaskanade_manual_tracking
 from sparse.lucaskanade_interactive import optimized_lucaskanade_method
+from Dence.dence_pyramid import dence_method
+from Dence.RLOF import rlof_method
 
 def main():
     parser = ArgumentParser()
     parser.add_argument(
         "--algorithm",
-        choices=["lucaskanade", "lucaskanade_interactive" , "lucaskanade_manual"],
+        choices=["lucaskanade", "lucaskanade_interactive" , "lucaskanade_manual , dence_pyramid_lk" , "dence_rlof"],
         required=True,
         help="Optical flow algorithm to use",
     )
@@ -28,6 +29,7 @@ def main():
     else:
         video_source = args.capture_index
 
+    # Decide for algorithm 
     if args.algorithm == "lucaskanade":
         lucaskanade_method(video_source)
 
@@ -36,6 +38,12 @@ def main():
 
     elif args.algorithm == "lucaskanade_interactive":
         optimized_lucaskanade_method(video_source)
+
+    elif args.algorithm == " dence_pyramid_lk":
+        dence_method(video_source)
+
+    elif args.algorithm == "dence_rlof":
+        rlof_method(video_source)
 
 if __name__ == "__main__":
     main()
