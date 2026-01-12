@@ -78,4 +78,4 @@ def farneback_method(video_path):
 
 if __name__=="__main__":
    # dence_method()
-    farneback_method("/mnt/h/Behko/sparse_optical_flow/videos/Highway_9654.mp4")
+    farneback_method("videos/Highway_6436.mp4")

@@ -38,4 +38,4 @@ def rlof_method(source):
 
 
 if __name__ == "__main__":
-    rlof_method('/mnt/h/Behko/sparse_optical_flow/videos/car.mp4')
+    rlof_method('videos/Highway_6436.mp4')
