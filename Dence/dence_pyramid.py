@@ -26,7 +26,7 @@ def dence_method(source):
         hsv[..., 0] = ang * 180 / np.pi / 2
         hsv[..., 2] = cv.normalize(mag, None, 0, 255, cv.NORM_MINMAX)
 
-        bgr = cv.cvtColor(hsv, cv.COLOR_HSV2BGR)
+        bgr = cv.cvtColor(hsv, cv.COLOR_HSV2BGR) 
 
         cv.imshow("Dense Optical Flow (Lucas-Kanade)", bgr)
         cv.imshow("Original", new_frame)

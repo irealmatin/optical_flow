@@ -3,12 +3,13 @@ from sparse.lucas_kanade import lucaskanade_method , lucaskanade_manual_tracking
 from sparse.lucaskanade_interactive import optimized_lucaskanade_method
 from Dence.dence_pyramid import dence_method
 from Dence.RLOF import rlof_method
+from Dence.dence_pyramid import farneback_method
 
 def main():
     parser = ArgumentParser()
     parser.add_argument(
         "--algorithm",
-        choices=["lucaskanade", "lucaskanade_interactive" , "lucaskanade_manual" , "dence_pyramid_lk" , "dence_rlof"],
+        choices=["lucaskanade", "lucaskanade_interactive" , "lucaskanade_manual" , "dence_pyramid_lk" , "dence_rlof" , "farneback"],
         required=True,
         help="Optical flow algorithm to use",
     )
@@ -44,6 +45,9 @@ def main():
 
     elif args.algorithm == "dence_rlof":
         rlof_method(video_source)
+
+    elif args.algorithm == "farneback":
+        farneback_method(video_source)
 
 if __name__ == "__main__":
     main()

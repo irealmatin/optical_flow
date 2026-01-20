@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 
-
 def lucaskanade_method(path):
     """
     Apply Lucas-Kanade Optical Flow method to track feature points in a video.
@@ -98,7 +97,7 @@ def lucaskanade_method(path):
             #     2,
             #     shift=shift,
             #     lineType=cv2.LINE_AA
-            # )
+            # ) 
 
             # frame = cv2.circle(
             #     frame,
@@ -248,5 +247,5 @@ def lucaskanade_manual_tracking(video_source):
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    lucaskanade_method("sparse_optical_flow/videos/Highway_6436.mp4")  # 0 for webcam, or provide video file path
-    # lucaskanade_manual_tracking("sparse_optical_flow/videos/Highway_6436.mp4")  # 0 for webcam, or provide video file path
+    lucaskanade_method("/mnt/h/Behko/sparse_optical_flow/videos/Highway_6436.mp4")  # 0 for webcam, or provide video file path
+    # lucaskanade_manual_tracking("/mnt/h/Behko/sparse_optical_flow/videos/Highway_6436.mp4")  # 0 for webcam, or provide video file path

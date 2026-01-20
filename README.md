@@ -26,7 +26,7 @@ A differential method that assumes the flow is essentially constant in a local n
 Install the required dependencies:
 
 ```bash
-pip install opencv-python numpy
+pip install opencv-python numpy opencv-contrib-python
 ```
 ## 🚀 How to Run
 1. Clone the repository.

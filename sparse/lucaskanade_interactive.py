@@ -134,4 +134,4 @@ def optimized_lucaskanade_method(source):
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    optimized_lucaskanade_method('sparse_optical_flow/videos/Highway_9654.mp4')
+    optimized_lucaskanade_method('videos/Highway_6436.mp4')
