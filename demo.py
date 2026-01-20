@@ -40,7 +40,7 @@ def main():
     elif args.algorithm == "lucaskanade_interactive":
         optimized_lucaskanade_method(video_source)
 
-    elif args.algorithm == " dence_pyramid_lk":
+    elif args.algorithm == "dence_pyramid_lk":
         dence_method(video_source)
 
     elif args.algorithm == "dence_rlof":

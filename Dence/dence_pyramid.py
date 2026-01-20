@@ -77,5 +77,6 @@ def farneback_method(video_path):
     cv.destroyAllWindows()
 
 if __name__=="__main__":
+    pass
    # dence_method()
-    farneback_method("videos/Highway_6436.mp4")
+    # farneback_method("videos/Highway_6436.mp4")
